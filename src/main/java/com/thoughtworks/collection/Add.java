@@ -3,10 +3,16 @@ package com.thoughtworks.collection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
-        throw new NotImplementedException();
+
+        int min = Math.min(leftBorder, rightBorder);
+        int max = Math.max(leftBorder, rightBorder);
+        return IntStream.rangeClosed(min, max)
+                .filter(number -> number%2 == 0)
+                .sum();
     }
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
