@@ -17,7 +17,22 @@ public class CollectionOperator {
     }
 
     public List<Integer> getEvenListByIntervals(int left, int right) {
-        throw new NotImplementedException();
+        int min = Math.min(left, right);
+        int max = Math.max(left, right);
+        if(min == left) {
+            return IntStream.rangeClosed(min, max)
+                    .filter(number -> number % 2 == 0)
+                    .boxed()
+                    .sorted()
+                    .collect(Collectors.toList());
+        }
+        else{
+            return IntStream.rangeClosed(min, max)
+                    .filter(number -> number % 2 == 0)
+                    .boxed()
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
+            }
     }
 
     public List<Integer> popEvenElments(int[] array) {
